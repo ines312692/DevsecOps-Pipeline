@@ -1,0 +1,53 @@
+jenkins:
+  systemMessage: "DevSecOps Jenkins - Security First!"
+  numExecutors: 2
+  mode: NORMAL
+  scmCheckoutRetryCount: 3
+
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: admin
+          password: ${JENKINS_ADMIN_PASSWORD:-admin123}
+
+  authorizationStrategy:
+    globalMatrix:
+      permissions:
+        - "Overall/Read:authenticated"
+        - "Overall/Administer:admin"
+
+  globalNodeProperties:
+    - envVars:
+        env:
+          - key: "SONAR_HOST_URL"
+            value: "http://sonarqube:9000"
+          - key: "TRIVY_CACHE_DIR"
+            value: "/tmp/trivy-cache"
+
+tool:
+  git:
+    installations:
+      - name: "Default"
+        home: "/usr/bin/git"
+
+  sonarRunnerInstallation:
+    installations:
+      - name: "SonarQube Scanner"
+        properties:
+          - installSource:
+              installers:
+                - sonarRunnerInstaller:
+                    id: "4.8.0.2856"
+
+unclassified:
+  sonarGlobalConfiguration:
+    installations:
+      - name: "SonarQube"
+        serverUrl: "http://sonarqube:9000"
+        credentialsId: "sonar-token"
+
+  slackNotifier:
+    teamDomain: "your-team"
+    token: "${SLACK_TOKEN}"
+    room: "#devsecops-alerts"

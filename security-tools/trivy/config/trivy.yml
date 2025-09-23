@@ -1,0 +1,23 @@
+# Trivy configuration
+cache:
+  dir: /tmp/trivy-cache
+db:
+  repository: ghcr.io/aquasecurity/trivy-db
+
+format: json
+output: /tmp/trivy-results.json
+
+vulnerability:
+  type:
+    - os
+    - library
+  ignore-unfixed: false
+
+severity:
+  - UNKNOWN
+  - LOW
+  - MEDIUM
+  - HIGH
+  - CRITICAL
+
+exit-code: 1
