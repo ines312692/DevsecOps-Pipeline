@@ -1,0 +1,46 @@
+DevsecOps-Pipeline/
+├── docker/
+│   ├── jenkins/
+│   │   ├── Dockerfile
+│   │   └── plugins.txt
+│   ├── security-tools/
+│   ├── sonarqube/
+├── jenkins/
+│   ├── configuration/
+│   │   └── jenkins.yml
+│   ├── pipelines/
+│       ├── shared-libraries/
+│       │   ├── vars/
+│       │       └── securityScan.groovy
+│       ├── templates/
+│           └── java-pipeline.groovy
+├── monitoring/
+│   ├── prometheus/
+│       ├── config/
+│           └── prometheus.yml
+├── scripts/
+│   ├── setup/
+│       └── install-tools.sh
+├── security-tools/
+│   ├── falco/
+│   │   ├── config/
+│   │   │   └── falco.yml
+│   │   ├── scripts/
+│   ├── owasp-dependency-check/
+│   │   ├── config/
+│   │       └── dependency-check.properties
+│   ├── snyk/
+│   │   ├── scripts/
+│   │       └── scan.sh
+│   ├── sonarqube/
+│   │   ├── config/
+│   │       └── sonar-project.properties
+│   ├── trivy/
+│       ├── config/
+│       │   └── trivy.yml
+│       ├── scripts/
+│           └── scan-image.sh
+├── DevsecOps-Pipeline.iml
+├── Makefile
+├── README.md
+└── directory-tree.txt

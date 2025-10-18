@@ -57,7 +57,7 @@ pipeline {
             }
             steps {
                 script {
-                    echo "🚀 Deploying to production..."
+                    echo " Deploying to production..."
                     // Add deployment steps here
                 }
             }
